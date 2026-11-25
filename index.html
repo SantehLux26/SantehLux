@@ -49,6 +49,7 @@ small.hint{color:#888;display:block;margin-bottom:8px}
 .btn-tg{background:#2aabee;color:#fff}
 .btn-copy{background:var(--dark);color:#fff}
 .counter{color:#5b7a97;font-size:13px;margin-bottom:10px}
+.ph img{width:100%;height:100%;object-fit:contain;background:#fff;border-radius:10px}
 </style>
 </head>
 <body>
@@ -104,6 +105,22 @@ let shown = PAGE_SIZE;
 
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+let PHOTOS = window.PHOTOS || {};
+let photosLoaded = !!window.PHOTOS;
+let photosPending = false;
+function ensurePhotos(cb){
+  if(photosLoaded){ cb && cb(); return; }
+  photosLoaded = true;
+  const s = document.createElement('script');
+  s.src = 'photos.js';
+  s.onload = () => { PHOTOS = window.PHOTOS || {}; cb && cb(); };
+  s.onerror = () => { cb && cb(); };
+  document.head.appendChild(s);
+}
+function phHTML(p){
+  if(p.p && PHOTOS[p.p]) return '<img src="'+PHOTOS[p.p]+'" alt="" loading="lazy">';
+  return ICONS[iconFor(p)];
+}
 function iconFor(p){
   const t = (p.n+' '+p.c+' '+(p.b||'')).toLowerCase();
   for(const [k,ic] of ICON_RULES) if(t.indexOf(k) >= 0) return ic;
@@ -136,7 +153,7 @@ function render(){
     const nm = p.n + (p.s ? ' ' + p.s : '');
     return `
     <div class="card">
-      <div class="ph">${ICONS[iconFor(p)]}</div>
+      <div class="ph">${phHTML(p)}</div>
       <div class="brand">${esc(p.b||'')}</div>
       <div class="name">${esc(nm)}</div>
       <div class="price">Цена по запросу</div>
@@ -205,6 +222,7 @@ function sendOrder(kind){
 }
 
 buildCats(); render(); updateCount();
+if(!photosLoaded && PRODUCTS.some(p=>p.p)){ ensurePhotos(()=>render()); }
 </script>
 </body>
 </html>
