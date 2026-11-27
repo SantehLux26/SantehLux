@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SantehLux — сантехника и инженерные материалы</title>
+<meta name="description" content="SantehLux — заказ сантехники и материалов для монтажа: трубы, фитинги, арматура, котельное оборудование. Более 14 000 позиций: STOUT, ROMMER, Cimberio, Baxi, Рехау и другие бренды.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231466d9'/%3E%3Ctext x='50' y='70' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0c2440; --navy2:#123a63; --blue:#1466d9; --blue-d:#0d4cad;
+  --acc:#ff8a1e; --acc-d:#e9740a;
+  --bg:#f2f5f9; --card:#fff; --line:#e3eaf2; --tx:#1c2b3a; --mut:#64798f;
+  --r:14px; --shadow:0 2px 14px rgba(16,42,67,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.45}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+img{max-width:100%}
+
+/* ---------- topbar ---------- */
+.topbar{background:var(--navy);color:#cfe0f2;font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 20px;flex-wrap:wrap}
+.tb-left{display:flex;align-items:center;gap:16px}
+.tb-wa{color:#7fe3a1;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.tb-wa:hover{color:#a5f0be}
+
+/* ---------- header ---------- */
+.head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;gap:18px;height:66px}
+.logo{display:flex;gap:11px;align-items:center;flex:none}
+.logo-mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--blue),#0aa2c0);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 12px rgba(20,102,217,.35)}
+.logo-mark svg{width:24px;height:24px}
+.logo-text{font-size:21px;font-weight:800;letter-spacing:.2px;color:var(--navy);line-height:1}
+.logo-text b{color:var(--blue)}
+.logo-text small{display:block;font-size:9.5px;font-weight:700;color:var(--mut);letter-spacing:.6px;margin-top:4px;text-transform:uppercase}
+.search{flex:1;max-width:560px;position:relative}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--mut);pointer-events:none}
+.search input{width:100%;height:46px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:0 16px 0 42px;font-size:15px;font-family:inherit;outline:none;transition:.2s}
+.search input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(20,102,217,.12)}
+.cartbtn{position:relative;display:flex;align-items:center;gap:9px;background:var(--acc);color:#fff;border:none;border-radius:12px;height:46px;padding:0 18px;font-weight:800;font-size:14.5px;cursor:pointer;flex:none;transition:.2s;box-shadow:0 4px 14px rgba(255,138,30,.35)}
+.cartbtn:hover{background:var(--acc-d);transform:translateY(-1px)}
+.badge{background:#fff;color:var(--acc-d);border-radius:20px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;padding:0 6px}
+
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(120deg,#0c2440 0%,#123a63 55%,#1466d9 135%);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(620px 320px at 85% 15%,rgba(255,138,30,.20),transparent 60%),
+             radial-gradient(520px 280px at 8% 95%,rgba(10,162,192,.28),transparent 60%);}
+.hero::after{content:'';position:absolute;right:-60px;top:-40px;width:420px;height:420px;border:2px dashed rgba(255,255,255,.10);border-radius:50%}
+.hero-in{position:relative;padding:64px 20px 58px;max-width:1240px;margin:0 auto}
+.hero .eyebrow{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:6px 14px;font-size:12.5px;font-weight:700;letter-spacing:.5px;margin-bottom:18px}
+.hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.12;margin:0 0 16px;font-weight:800;max-width:760px}
+.hero h1 em{font-style:normal;color:#ffb469}
+.hero p{font-size:clamp(15px,2vw,18px);color:#d7e4f4;max-width:660px;margin:0 0 28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:52px;padding:0 26px;border-radius:12px;font-weight:800;font-size:15px;border:none;cursor:pointer;transition:.2s}
+.btn-acc{background:var(--acc);color:#fff;box-shadow:0 6px 18px rgba(255,138,30,.4)}
+.btn-acc:hover{background:var(--acc-d);transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.stat{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);border-radius:12px;padding:13px 22px}
+.stat b{display:block;font-size:21px}
+.stat span{font-size:12.5px;color:#c9d9ec}
+
+/* ---------- steps ---------- */
+.steps{background:#fff;border-bottom:1px solid var(--line)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:28px 20px;max-width:1240px;margin:0 auto}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step-n{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#0aa2c0);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;font-size:17px;box-shadow:0 4px 12px rgba(20,102,217,.3)}
+.step b{display:block;margin-bottom:4px;font-size:15px;color:var(--navy)}
+.step p{margin:0;font-size:13.5px;color:var(--mut)}
+
+/* ---------- sections ---------- */
+.sec{padding:42px 20px 8px;max-width:1240px;margin:0 auto}
+.sec-title{font-size:25px;margin:0 0 18px;color:var(--navy);font-weight:800}
+
+/* ---------- category tiles ---------- */
+.catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(242px,1fr));gap:14px}
+.cat-tile{position:relative;border-radius:var(--r);padding:18px;cursor:pointer;color:#fff;min-height:108px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;transition:.2s;overflow:hidden;border:none;text-align:left}
+.cat-tile:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(12,36,64,.28)}
+.cat-tile svg{width:32px;height:32px;position:absolute;top:14px;right:16px;opacity:.9}
+.cat-tile b{font-size:15.5px;line-height:1.25;font-weight:800}
+.cat-tile span{font-size:12px;opacity:.85;font-weight:600}
+
+/* ---------- brands ---------- */
+.brandrow{display:flex;gap:10px;flex-wrap:wrap}
+.bchip{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 17px;font-weight:700;font-size:13.5px;color:var(--navy2);cursor:pointer;transition:.15s}
+.bchip:hover{border-color:var(--blue);color:var(--blue)}
+.bchip.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* ---------- catalog ---------- */
+.catalog{padding-bottom:56px}
+.cat-line{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:26px 0 12px}
+.cat-line h2{font-size:21px;margin:0;color:var(--navy)}
+.sortsel{border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--navy2);background:#fff;outline:none;cursor:pointer}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:8px 15px;border-radius:20px;background:#fff;border:1.5px solid var(--line);font-size:13px;font-weight:600;color:var(--navy2);cursor:pointer;white-space:nowrap;transition:.15s}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.counter{color:var(--mut);font-size:13.5px;margin:10px 0 14px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(226px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;cursor:pointer;transition:.2s;border:1px solid transparent}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(12,36,64,.15);border-color:#dfe8f2}
+.ph{height:150px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef4fb,#f8fbfe);position:relative;flex:none}
+.ph img{width:100%;height:100%;object-fit:contain;padding:10px}
+.ph .ph-ic{width:62px;height:62px;color:var(--blue);display:inline-flex}
+.ph .ph-ic svg{width:100%;height:100%}
+.cbody{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cbrand{font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--blue)}
+.cname{font-weight:700;font-size:13.5px;line-height:1.35;min-height:37px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.csize{font-size:12.5px;color:var(--mut)}
+.cfoot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cprice{font-weight:800;font-size:13.5px;color:var(--navy)}
+.addbtn{background:var(--navy);color:#fff;border:none;border-radius:9px;padding:9px 14px;font-weight:700;font-size:13px;cursor:pointer;transition:.15s;white-space:nowrap}
+.addbtn:hover{background:var(--blue)}
+.stepper{display:flex;align-items:center;background:var(--navy);border-radius:9px;color:#fff;overflow:hidden;flex:none}
+.stepper button{width:30px;height:36px;background:none;border:none;color:#fff;font-size:17px;cursor:pointer}
+.stepper button:hover{color:#ffb469}
+.stepper span{font-weight:800;min-width:24px;text-align:center;font-size:14px}
+.more{display:block;margin:24px auto;padding:13px 36px;border:1.5px solid var(--navy);color:var(--navy);background:#fff;border-radius:12px;font-size:14.5px;font-weight:700;cursor:pointer;transition:.15s}
+.more:hover{background:var(--navy);color:#fff}
+.empty{display:none;color:#8aa;text-align:center;padding:46px 0;font-size:15px}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:#cfe0f2;margin-top:60px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding:40px 20px 30px;max-width:1240px;margin:0 auto}
+.fbrand{font-size:20px;font-weight:800;color:#fff}
+.fbrand b{color:var(--acc)}
+footer p{font-size:13.5px;color:#9db4cd;margin:10px 0 0;max-width:340px}
+footer h4{margin:0 0 12px;font-size:14px;color:#fff}
+footer a.fl{display:block;font-size:14px;margin-bottom:9px;color:#cfe0f2}
+footer a.fl:hover{color:#fff}
+.fwa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;border-radius:10px;padding:11px 18px;font-weight:700;font-size:14px;margin-top:6px}
+.fbot{border-top:1px solid rgba(255,255,255,.12);padding:14px 20px;text-align:center;font-size:12.5px;color:#7f96af}
+
+/* ---------- cart drawer ---------- */
+.overlay{position:fixed;inset:0;background:rgba(12,36,64,.5);opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.overlay.show{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;height:100%;width:min(430px,100%);background:#fff;z-index:70;transform:translateX(105%);transition:.28s;display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(12,36,64,.25)}
+.panel.show{transform:none}
+.phead{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.phead b{font-size:18px;color:var(--navy)}
+.xbtn{background:#f1f5fa;border:none;width:34px;height:34px;border-radius:9px;font-size:17px;cursor:pointer;color:var(--navy2)}
+.pbody{flex:1;overflow-y:auto;padding:6px 20px}
+.citem{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f4f9}
+.cthumb{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,#eef4fb,#f8fbfe);display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden}
+.cthumb img{width:100%;height:100%;object-fit:contain}
+.cthumb svg{width:30px;height:30px;color:var(--blue)}
+.citem .n{flex:1}
+.citem .nm{font-weight:700;font-size:13px;line-height:1.3;color:var(--tx)}
+.citem .pp{font-size:12px;color:var(--mut);margin-top:3px}
+.qty{display:flex;align-items:center;gap:2px;flex:none}
+.qty button{width:28px;height:28px;border-radius:7px;border:1.5px solid var(--line);cursor:pointer;background:#fff;font-size:15px;color:var(--navy2)}
+.qty b{min-width:24px;text-align:center;font-size:14px}
+.del{background:none;border:none;cursor:pointer;font-size:15px;opacity:.55;padding:4px}
+.del:hover{opacity:1}
+.pfoot{padding:16px 20px;border-top:1px solid var(--line);background:#fbfcfe}
+.orderform input{width:100%;padding:11px 13px;margin-bottom:8px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-family:inherit;outline:none;transition:.15s}
+.orderform input:focus{border-color:var(--blue)}
+small.hint{color:var(--mut);display:block;margin:2px 0 10px;font-size:12px}
+.btn2{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:9px;transition:.15s}
+.btn2:hover{transform:translateY(-1px)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-tg{background:#2aabee;color:#fff}
+.btn-copy{background:var(--navy);color:#fff}
+.empty-cart{color:var(--mut);text-align:center;padding:60px 10px;font-size:15px}
+.empty-cart svg{width:54px;height:54px;color:#c3d2e2;margin-bottom:12px}
+
+/* ---------- product modal ---------- */
+.modal-ov{position:fixed;inset:0;background:rgba(12,36,64,.55);z-index:80;opacity:0;pointer-events:none;transition:.2s;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-ov.show{opacity:1;pointer-events:auto}
+.pmodal{position:relative;background:#fff;border-radius:18px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;transform:scale(.96);transition:.2s}
+.modal-ov.show .pmodal{transform:scale(1)}
+.pm-in{padding:22px}
+.pm-ph{height:260px;border-radius:14px;background:linear-gradient(135deg,#eef4fb,#f8fbfe);display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden}
+.pm-ph img{max-height:100%;max-width:100%;object-fit:contain}
+.pm-ph svg{width:90px;height:90px;color:var(--blue)}
+.pm-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.9);border:none;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:2}
+.pm-brand{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.pm-name{font-size:18px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:10px}
+.pm-rows{display:grid;gap:7px;margin:14px 0}
+.pm-row{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;padding:9px 13px;background:#f6f9fc;border-radius:9px}
+.pm-row span{color:var(--mut)}
+.pm-row b{text-align:right}
+.pm-price{font-size:19px;font-weight:800;color:var(--navy);margin:14px 0}
+.pm-actions{display:flex;gap:10px;align-items:center}
+.pm-actions .addbtn{flex:1;padding:14px;font-size:15px;border-radius:12px}
+.pm-actions .stepper button{height:44px}
+
+/* ---------- fab ---------- */
+.fab{display:none;position:fixed;right:16px;bottom:16px;z-index:55;width:60px;height:60px;border-radius:50%;background:var(--acc);border:none;color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(255,138,30,.5);align-items:center;justify-content:center}
+.fab svg{width:26px;height:26px}
+.fab .badge{position:absolute;top:-4px;right:-4px}
+
+@media(max-width:900px){
+  .steps-grid{grid-template-columns:1fr;gap:14px}
+  .fgrid{grid-template-columns:1fr;gap:22px}
+}
+@media(max-width:760px){
+  .logo-text small{display:none}
+  .logo-text{font-size:18px}
+  .hrow{gap:10px;height:60px}
+  .cartbtn span.lbl{display:none}
+  .topbar .tb-left{display:none}
+  .hero-in{padding:44px 20px 44px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
+  .ph{height:120px}
+  .fab{display:flex}
+  .citem .del{display:none}
+}
+@media(max-width:560px){
+  .hrow{flex-wrap:wrap;height:auto;padding:10px 0}
+  .search{order:3;flex:1 1 100%;max-width:none}
+  .cartbtn{margin-left:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <span>Сантехника и инженерное оборудование</span>
+      <span>·</span>
+      <span>Соберём заказ и привезём на объект</span>
+    </div>
+    <a class="tb-wa" href="https://wa.me/79118974410" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.2.5.2.6.4 0 .2 0 .7-.2 1z"/></svg>
+      +7 911 897-44-10
+    </a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap hrow">
+    <a class="logo" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6.4 5.6L3 17.2V21h3.8l5.3-5.3a4.5 4.5 0 0 0 5.6-6.4l-2.8 2.8-2.4-.7-.7-2.4 2.9-2.7z"/></svg>
+      </span>
+      <span class="logo-text">Santeh<b>Lux</b><small>сантехника · арматура · материалы</small></span>
+    </a>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" placeholder="Поиск: кран, труба, радиатор, коллектор..." autocomplete="off">
+    </div>
+    <button class="cartbtn" id="cartBtn">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 7H6"/></svg>
+      <span class="lbl">Корзина</span>
+      <span class="badge" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <span class="eyebrow">ЗАКАЗ МАТЕРИАЛОВ ДЛЯ МОНТАЖА</span>
+    <h1>Всё для инженерных систем — <em>от крана до котла</em></h1>
+    <p>Более 14 000 позиций для отопления и водоснабжения: STOUT, ROMMER, Cimberio, Baxi, Рехау и другие бренды. Выберите материалы — мы соберём заказ и привезём.</p>
+    <div class="hero-btns">
+      <a class="btn btn-acc" href="#catalog">Выбрать материалы
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="https://wa.me/79118974410" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>14 125</b><span>позиций в каталоге</span></div>
+      <div class="stat"><b>67</b><span>брендов</span></div>
+      <div class="stat"><b>14</b><span>категорий товаров</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="steps-grid">
+    <div class="step"><div class="step-n">1</div><div><b>Выберите материалы</b><p>Отметьте нужные позиции в каталоге — кнопка «В корзину» и плюс добавят их к заказу.</p></div></div>
+    <div class="step"><div class="step-n">2</div><div><b>Отправьте заказ</b><p>Одна кнопка — и заказ придёт в WhatsApp с названием, размером и артикулом каждого товара.</p></div></div>
+    <div class="step"><div class="step-n">3</div><div><b>Получите материалы</b><p>Мы подтверждаем наличие и цены, собираем заказ и привозим на объект.</p></div></div>
+  </div>
+</section>
+
+<section class="sec" id="catsSec">
+  <h2 class="sec-title">Каталог</h2>
+  <div class="catgrid" id="catGrid"></div>
+</section>
+
+<section class="sec">
+  <h2 class="sec-title">Популярные бренды</h2>
+  <div class="brandrow" id="brandRow"></div>
+</section>
+
+<section class="sec catalog" id="catalog">
+  <div class="cat-line">
+    <h2 id="catTitle">Все товары</h2>
+    <select class="sortsel" id="sortSel">
+      <option value="def">По умолчанию</option>
+      <option value="name">Название А→Я</option>
+      <option value="brand">Сначала по бренду</option>
+    </select>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="counter" id="counter"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">Ничего не найдено. Попробуйте другой запрос или категорию.</div>
+  <button class="more" id="moreBtn" style="display:none">Показать ещё</button>
+</section>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="fbrand">Santeh<b>Lux</b></div>
+      <p>Заказ материалов для монтажа систем отопления и водоснабжения. Каталог сформирован по прайс-листам поставщиков; цены уточняются при подтверждении заказа.</p>
+    </div>
+    <div>
+      <h4>Как заказать</h4>
+      <a class="fl" href="#catalog">Каталог товаров</a>
+      <a class="fl" href="#catsSec">Категории</a>
+      <a class="fl" href="#" onclick="openCart();return false;">Корзина</a>
+    </div>
+    <div>
+      <h4>Контакты</h4>
+      <a class="fl" href="tel:+79118974410">+7 911 897-44-10</a>
+      <a class="fl" href="https://wa.me/79118974410" target="_blank" rel="noopener">WhatsApp — заказы и вопросы</a>
+      <a class="fwa" href="https://wa.me/79118974410" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.2.5.2.6.4 0 .2 0 .7-.2 1z"/></svg>
+        Написать в WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="fbot">© 2026 SantehLux · Цены уточняются при подтверждении заказа</div>
+</footer>
+
+<div class="overlay" id="ov"></div>
+<aside class="panel" id="panel">
+  <div class="phead"><b>🛒 Корзина</b><button class="xbtn" id="closeCart">✕</button></div>
+  <div class="pbody" id="cbody"></div>
+  <div class="pfoot" id="pfoot">
+    <div class="orderform">
+      <input id="fName" placeholder="Имя (кто заказывает)">
+      <input id="fPhone" placeholder="Телефон для связи">
+      <input id="fNote" placeholder="Объект / адрес / примечание">
+      <small class="hint">Заказ придёт в WhatsApp с названием, размером и артикулом каждого товара. Цены подтверждаем перед сборкой.</small>
+    </div>
+    <button class="btn2 btn-wa" id="btnWa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.2.5.2.6.4 0 .2 0 .7-.2 1z"/></svg>
+      Отправить заказ в WhatsApp
+    </button>
+    <button class="btn2 btn-tg" id="btnTg">Отправить в Telegram</button>
+    <button class="btn2 btn-copy" id="btnCopy">Скопировать текст заказа</button>
+  </div>
+</aside>
+
+<div class="modal-ov" id="modalOv">
+  <div class="pmodal" id="pmodal"></div>
+</div>
+
+<button class="fab" id="fab">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 7H6"/></svg>
+  <span class="badge" id="fabCount">0</span>
+</button>
+
+<script>
+// === НАСТРОЙКИ ===
+// Номер WhatsApp для заказов (в формате 7XXXXXXXXXXX). Telegram — ник без @, если нужен.
+const PHONE = { whatsapp: "79118974410", telegram: "" };
+const PAGE_SIZE = 60;
+</script>
+<script src="products.js"></script>
+<script>
+const SV = (d) => '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>';
+const ICONS = {
+  radiator: SV('<rect x="9" y="12" width="30" height="22" rx="3"/><path d="M15 17v12M21 17v12M27 17v12M33 17v12M14 34v5M34 34v5"/>'),
+  convector: SV('<rect x="8" y="18" width="32" height="13" rx="3"/><path d="M12 23h24M12 27h24M20 14h8M24 14v4"/>'),
+  pipe: SV('<rect x="8" y="18" width="26" height="12" rx="2"/><circle cx="40" cy="24" r="4"/>'),
+  tee: SV('<path d="M24 12v24M10 24h28"/>'),
+  elbow: SV('<path d="M12 40V20a8 8 0 0 1 8-8h16"/>'),
+  reducer: SV('<circle cx="16" cy="24" r="8"/><circle cx="33" cy="24" r="5"/><path d="M24 21h4M24 27h4"/>'),
+  cross: SV('<path d="M24 10v28M10 24h28"/>'),
+  plug: SV('<path d="M14 24a10 10 0 0 1 20 0M19 24v9a5 5 0 0 0 10 0v-9"/>'),
+  coupling: SV('<rect x="10" y="19" width="10" height="10" rx="2"/><rect x="28" y="19" width="10" height="10" rx="2"/><path d="M20 24h8"/>'),
+  nipple: SV('<rect x="14" y="21" width="20" height="6" rx="2"/><path d="M19 21v6M24 21v6M29 21v6"/>'),
+  ballvalve: SV('<circle cx="24" cy="29" r="8"/><path d="M24 21v-8M17 9h14M19 29h10"/>'),
+  valve: SV('<path d="M14 23h20v9H14zM24 23v-9M17 13h14"/>'),
+  filter: SV('<path d="M12 17h24v5l-9 7v10h-6V29l-9-7z"/>'),
+  meter: SV('<rect x="10" y="17" width="28" height="15" rx="3"/><path d="M16 24h4M23 24h4M30 24h4"/>'),
+  collector: SV('<rect x="7" y="15" width="34" height="8" rx="2"/><path d="M13 23v11M21 23v11M29 23v11M37 23v11"/>'),
+  pump: SV('<circle cx="24" cy="24" r="11"/><circle cx="24" cy="24" r="3.5"/><path d="M24 13v7M24 28v7M13 24h7M28 24h7"/>'),
+  tank: SV('<path d="M14 17c0-5 20-5 20 0v15c0 5-20 5-20 0zM14 24h20M18 34v6M30 34v6"/>'),
+  boiler: SV('<rect x="11" y="10" width="26" height="28" rx="4"/><path d="M17 17h14M24 30c-3 2-3 5 0 6.5 3-1.5 3-4.5 0-6.5z"/>'),
+  heater: SV('<rect x="15" y="9" width="18" height="30" rx="9"/><path d="M24 19c-3 2.4-3 6 0 7.8 3-1.8 3-5.4 0-7.8zM19 32h10"/>'),
+  chimney: SV('<circle cx="24" cy="24" r="12"/><circle cx="24" cy="24" r="6"/>'),
+  thermostat: SV('<circle cx="24" cy="27" r="10"/><path d="M24 27l6.5-6.5M24 17v-5M15 11h18"/>'),
+  sensor: SV('<path d="M24 42V17"/><circle cx="24" cy="13" r="3.5"/><path d="M31 7c4 3 4 8 0 11M17 7c-4 3-4 8 0 11"/>'),
+  controller: SV('<rect x="9" y="13" width="30" height="22" rx="3"/><path d="M15 20h11M15 28h5"/><circle cx="31" cy="19" r="2"/><circle cx="31" cy="28" r="2"/>'),
+  underfloor: SV('<path d="M8 15h32M8 22h32M8 29h32M8 36h32"/>'),
+  sealant: SV('<path d="M19 14h10v20a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2zM24 14V8h6"/>'),
+  hose: SV('<path d="M10 25c5-6 9 6 14 0s9-6 14 0"/><rect x="4" y="21" width="8" height="8" rx="1.5"/><rect x="36" y="21" width="8" height="8" rx="1.5"/>'),
+  tray: SV('<rect x="10" y="13" width="28" height="22" rx="4"/><circle cx="24" cy="27" r="4"/><path d="M14 19h20"/>'),
+  tool: SV('<path d="M28 12a6 6 0 0 1 8 8l-4 4 4 4-6 6-4-4-4 4a6 6 0 0 1-8-8l4-4z"/>'),
+  bracket: SV('<path d="M16 10v9a8 8 0 0 0 16 0v-9M24 27v11"/>'),
+  part: SV('<path d="M12 19h6v10h-6zM30 19h6v10h-6zM18 21h12v6H18z"/>')
+};
+const CATICON = { "Котельное оборудование": "boiler", "Арматура для котлов": "valve", "Трубы и фитинги": "pipe", "Арматура трубопроводная": "ballvalve", "Арматура терморегулирующая": "thermostat", "Теплый пол и кабели": "underfloor", "Счетчики и фильтры воды": "meter", "Защита от протечек": "controller", "Насосное оборудование": "pump", "Уплотнители и герметики": "sealant", "Расширительные баки": "tank", "Стабилизаторы и автоматика": "controller", "Промышленная арматура": "valve", "STOUT": "part" };
+const ICON_RULES = [["клапан", "valve"], ["вентиль", "valve"], ["редуктор", "valve"], ["затвор", "valve"], ["воздухоотвод", "valve"], ["смесительн", "valve"], ["обратн", "valve"], ["предохран", "valve"], ["кран", "ballvalve"], ["радиатор", "radiator"], ["полотенцесушитель", "radiator"], ["конвектор", "convector"], ["коллектор", "collector"], ["гребенк", "collector"], ["гидрострелк", "tank"], ["насос", "pump"], ["дымоход", "chimney"], ["дымоудал", "chimney"], ["коакс", "chimney"], ["оголовок", "chimney"], ["водонагреватель", "heater"], ["бойлер", "heater"], ["котел", "boiler"], ["котёл", "boiler"], ["котло", "boiler"], ["горелк", "boiler"], ["бак", "tank"], ["бачок", "tank"], ["теплый пол", "underfloor"], ["тёплый пол", "underfloor"], ["нагревательн", "underfloor"], ["кабель", "underfloor"], ["теплоносит", "sealant"], ["герметик", "sealant"], ["анаэроб", "sealant"], ["паста", "sealant"], ["фум", "sealant"], ["лен", "sealant"], ["смазк", "sealant"], ["подводк", "hose"], ["шланг", "hose"], ["гофр", "hose"], ["счетчик", "meter"], ["счётчик", "meter"], ["манометр", "meter"], ["термометр", "meter"], ["термостат", "thermostat"], ["терморегул", "thermostat"], ["датчик", "sensor"], ["зонд", "sensor"], ["zont", "controller"], ["контроллер", "controller"], ["автоматик", "controller"], ["стабилизатор", "controller"], ["реле", "controller"], ["сервопривод", "controller"], ["фильтр", "filter"], ["труба", "pipe"], ["трубк", "pipe"], ["трубы", "pipe"], ["канализац", "pipe"], ["штанг", "pipe"], ["лоток", "tray"], ["трап", "tray"], ["сифон", "tray"], ["инструмент", "tool"], ["клещи", "tool"], ["насадк", "tool"], ["ключ", "tool"], ["тройник", "tee"], ["крестовин", "cross"], ["угольник", "elbow"], ["уголок", "elbow"], ["отвод", "elbow"], ["колен", "elbow"], ["обвод", "elbow"], ["заглушк", "plug"], ["пробк", "plug"], ["муфт", "coupling"], ["американк", "coupling"], ["разъем", "coupling"], ["соединит", "coupling"], ["соединен", "coupling"], ["адаптер", "reducer"], ["переход", "reducer"], ["редукц", "reducer"], ["вставк", "reducer"], ["ниппель", "nipple"], ["футорк", "nipple"], ["сгон", "nipple"], ["штуцер", "nipple"], ["косичк", "nipple"], ["гайк", "nipple"], ["шпильк", "nipple"], ["прокладк", "part"], ["хомут", "bracket"], ["крепл", "bracket"], ["кронштейн", "bracket"], ["скоб", "bracket"], ["профиль", "bracket"], ["фланец", "part"], ["узел", "part"], ["комплект", "part"], ["принадлежност", "part"], ["компенсатор", "part"], ["седелк", "part"], ["инсталляц", "part"]];
+
+// --- фото (загружаются лениво из photos.js: ключ pp{стр}_{xref} -> base64) ---
+let PHOTOS = window.PHOTOS || {};
+let photosLoaded = !!window.PHOTOS;
+function ensurePhotos(cb){
+  if (photosLoaded) { cb && cb(); return; }
+  photosLoaded = true;
+  const s = document.createElement('script');
+  s.src = 'photos.js';
+  s.onload = () => { PHOTOS = window.PHOTOS || {}; cb && cb(); };
+  s.onerror = () => { cb && cb(); };
+  document.head.appendChild(s);
+}
+
+const PROD = {};
+PRODUCTS.forEach(p => { PROD[p.id] = p; });
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function iconFor(p){
+  const t = (p.n + ' ' + p.c + ' ' + (p.b||'')).toLowerCase();
+  for (const [k,ic] of ICON_RULES) if (t.indexOf(k) >= 0) return ic;
+  return CATICON[p.c] || 'part';
+}
+function phInner(p){
+  if (p.p && PHOTOS[p.p]) return '<img src="' + PHOTOS[p.p] + '" alt="" loading="lazy" onerror="this.remove()">';
+  return '<span class="ph-ic">' + ICONS[iconFor(p)] + '</span>';
+}
+
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem('plumbing_cart') || '{}'); } catch(e) { cart = {}; }
+let st = { q:'', cat:'Все', brand:'', sort:'def', shown:PAGE_SIZE };
+try { const f = JSON.parse(localStorage.getItem('plumbing_form') || '{}'); if (f) window.__form = f; } catch(e) {}
+
+const CAT_LABEL = { 'STOUT': 'STOUT · основной каталог' };
+const CAT_ICON2 = { 'STOUT':'part', 'Трубы и фитинги':'pipe', 'Котельное оборудование':'boiler',
+  'Арматура для котлов':'valve', 'Арматура трубопроводная':'ballvalve', 'Арматура терморегулирующая':'thermostat',
+  'Теплый пол и кабели':'underfloor', 'Счетчики и фильтры воды':'meter', 'Защита от протечек':'controller',
+  'Насосное оборудование':'pump', 'Уплотнители и герметики':'sealant', 'Расширительные баки':'tank',
+  'Стабилизаторы и автоматика':'controller', 'Промышленная арматура':'valve' };
+const CAT_GRAD = ['linear-gradient(135deg,#1466d9,#0aa2c0)','linear-gradient(135deg,#0c2440,#1466d9)',
+  'linear-gradient(135deg,#ff8a1e,#f5576c)','linear-gradient(135deg,#0aa2c0,#2dd4bf)',
+  'linear-gradient(135deg,#6366f1,#1466d9)','linear-gradient(135deg,#e9740a,#ffb469)',
+  'linear-gradient(135deg,#0d4cad,#6366f1)','linear-gradient(135deg,#059669,#34d399)',
+  'linear-gradient(135deg,#7c3aed,#a78bfa)','linear-gradient(135deg,#0891b2,#22d3ee)',
+  'linear-gradient(135deg,#db2777,#f472b6)','linear-gradient(135deg,#475569,#94a3b8)',
+  'linear-gradient(135deg,#b45309,#f59e0b)','linear-gradient(135deg,#166534,#4ade80)'];
+
+function plural(n){ const a = n % 100, b = a % 10;
+  if (a > 10 && a < 20) return 'товаров';
+  if (b === 1) return 'товар';
+  if (b >= 2 && b <= 4) return 'товара';
+  return 'товаров'; }
+
+function counts(){
+  const m = {};
+  PRODUCTS.forEach(p => { m[p.c] = (m[p.c]||0) + 1; });
+  return Object.keys(m).sort((a,b)=>m[b]-m[a]).map(c => ({ c, n: m[c] }));
+}
+
+function renderCatTiles(){
+  document.getElementById('catGrid').innerHTML = counts().map((o,i) => `
+    <button class="cat-tile" data-cat="${esc(o.c)}" style="background:${CAT_GRAD[i % CAT_GRAD.length]}">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${ICONS[CAT_ICON2[o.c] || 'part']}</svg>
+      <b>${esc(CAT_LABEL[o.c] || o.c)}</b><span>${o.n.toLocaleString('ru-RU')} ${plural(o.n)}</span>
+    </button>`).join('');
+}
+
+function topBrands(){
+  const m = {};
+  PRODUCTS.forEach(p => { if (p.b) m[p.b] = (m[p.b]||0) + 1; });
+  return Object.keys(m).filter(b => m[b] >= 60).sort((a,b)=>m[b]-m[a]).slice(0, 20);
+}
+
+function renderBrands(){
+  document.getElementById('brandRow').innerHTML = topBrands().map(b =>
+    `<button class="bchip${st.brand===b && !st.q ? ' active':''}" data-brand="${esc(b)}">${esc(b)}</button>`).join('');
+}
+
+function renderChips(){
+  const cs = ['Все'].concat(counts().map(o=>o.c));
+  document.getElementById('chips').innerHTML = cs.map(c =>
+    `<button class="chip${st.cat===c && !st.q && !st.brand ? ' active':''}" data-chip="${esc(c)}">${esc(c==='Все' ? 'Все товары' : (CAT_LABEL[c]||c))}</button>`).join('');
+}
+
+function filtered(){
+  let list = PRODUCTS;
+  if (st.q) {
+    const q = st.q.toLowerCase();
+    list = list.filter(p => (p.n+' '+p.s+' '+p.c+' '+p.b+' '+p.a).toLowerCase().includes(q));
+  } else {
+    if (st.cat !== 'Все') list = list.filter(p => p.c === st.cat);
+    if (st.brand) list = list.filter(p => p.b === st.brand);
+  }
+  if (st.sort === 'name') list = list.slice().sort((a,b)=>a.n.localeCompare(b.n,'ru'));
+  if (st.sort === 'brand') list = list.slice().sort((a,b)=>(a.b||'').localeCompare(b.b||'','ru')||a.n.localeCompare(b.n,'ru'));
+  return list;
+}
+
+function cardHTML(p){
+  const inCart = cart[p.id] || 0;
+  const ctl = inCart
+    ? `<div class="stepper"><button data-dec="${p.id}">−</button><span>${inCart}</span><button data-inc="${p.id}">+</button></div>`
+    : `<button class="addbtn" data-add="${p.id}">В корзину</button>`;
+  return `
+  <div class="card" data-open="${p.id}">
+    <div class="ph">${phInner(p)}</div>
+    <div class="cbody">
+      <div class="cbrand">${esc(p.b||'')}</div>
+      <div class="cname">${esc(p.n)}</div>
+      <div class="csize">${esc(p.s||'')}</div>
+      <div class="cfoot"><span class="cprice">Цена по запросу</span>${ctl}</div>
+    </div>
+  </div>`;
+}
+
+function render(){
+  const list = filtered();
+  document.getElementById('counter').textContent = `Показано ${Math.min(list.length, st.shown).toLocaleString('ru-RU')} из ${list.length.toLocaleString('ru-RU')} позиций`;
+  document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+  document.getElementById('moreBtn').style.display = list.length > st.shown ? 'block' : 'none';
+  document.getElementById('grid').innerHTML = list.slice(0, st.shown).map(cardHTML).join('');
+  document.getElementById('catTitle').textContent = st.q ? `Поиск: «${st.q}»` : (st.brand ? st.brand : (st.cat==='Все' ? 'Все товары' : (CAT_LABEL[st.cat]||st.cat)));
+  renderChips(); renderBrands();
+}
+
+/* ---------- события ---------- */
+document.getElementById('q').addEventListener('input', e => {
+  st.q = e.target.value.trim(); st.cat = 'Все'; st.brand = ''; st.shown = PAGE_SIZE; render();
+});
+document.getElementById('sortSel').addEventListener('change', e => { st.sort = e.target.value; render(); });
+document.getElementById('moreBtn').addEventListener('click', () => { st.shown += PAGE_SIZE; render(); });
+
+document.getElementById('catGrid').addEventListener('click', e => {
+  const t = e.target.closest('[data-cat]'); if (!t) return;
+  st.cat = t.dataset.cat; st.q = ''; st.brand = ''; document.getElementById('q').value = '';
+  st.shown = PAGE_SIZE; render();
+  document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('chips').addEventListener('click', e => {
+  const t = e.target.closest('[data-chip]'); if (!t) return;
+  st.cat = t.dataset.chip; st.q = ''; st.brand = ''; document.getElementById('q').value = '';
+  st.shown = PAGE_SIZE; render(); window.scrollTo(0, 0);
+});
+document.getElementById('brandRow').addEventListener('click', e => {
+  const t = e.target.closest('[data-brand]'); if (!t) return;
+  const b = t.dataset.brand;
+  if (st.brand === b) { st.brand = ''; } else { st.brand = b; st.q = ''; document.getElementById('q').value = ''; }
+  st.cat = 'Все'; st.shown = PAGE_SIZE; render();
+});
+
+document.getElementById('grid').addEventListener('click', e => {
+  const inc = e.target.closest('[data-inc]');
+  if (inc) { change(+inc.dataset.inc, 1); return; }
+  const dec = e.target.closest('[data-dec]');
+  if (dec) { change(+dec.dataset.dec, -1); return; }
+  const add = e.target.closest('[data-add]');
+  if (add) { change(+add.dataset.add, 1); return; }
+  const card = e.target.closest('[data-open]');
+  if (card) openProd(+card.dataset.open);
+});
+
+/* ---------- корзина ---------- */
+function change(id, d){
+  cart[id] = (cart[id]||0) + d;
+  if (cart[id] <= 0) delete cart[id];
+  save(); updateCount(); render();
+  if (document.getElementById('panel').classList.contains('show')) renderCart();
+}
+function save(){ localStorage.setItem('plumbing_cart', JSON.stringify(cart)); }
+function updateCount(){
+  const n = Object.values(cart).reduce((a,b)=>a+b, 0);
+  document.getElementById('cartCount').textContent = n;
+  document.getElementById('fabCount').textContent = n;
+}
+function openCart(){ document.getElementById('ov').classList.add('show'); document.getElementById('panel').classList.add('show'); renderCart(); }
+function closeCart(){ document.getElementById('ov').classList.remove('show'); document.getElementById('panel').classList.remove('show'); }
+document.getElementById('cartBtn').addEventListener('click', openCart);
+document.getElementById('fab').addEventListener('click', openCart);
+document.getElementById('closeCart').addEventListener('click', closeCart);
+document.getElementById('ov').addEventListener('click', closeCart);
+
+function renderCart(){
+  const ids = Object.keys(cart).map(Number);
+  document.getElementById('cbody').innerHTML = ids.length ? ids.map(id => {
+    const p = PROD[id]; if (!p) return '';
+    return `
+    <div class="citem">
+      <div class="cthumb">${phInner(p)}</div>
+      <div class="n">
+        <div class="nm">${esc(p.n)}${p.s ? ' · ' + esc(p.s) : ''}</div>
+        <div class="pp">${esc(p.b||'')} · арт. ${esc(p.a)}</div>
+      </div>
+      <div class="qty">
+        <button data-cdec="${id}">−</button><b>${cart[id]}</b><button data-cinc="${id}">+</button>
+      </div>
+      <button class="del" data-cdel="${id}" title="Удалить">✕</button>
+    </div>`;
+  }).join('') : `<div class="empty-cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 7H6"/></svg>Корзина пуста<br><small>Выберите товары в каталоге</small></div>`;
+  document.getElementById('pfoot').style.display = ids.length ? 'block' : 'none';
+}
+document.getElementById('cbody').addEventListener('click', e => {
+  const i = e.target.closest('[data-cinc]'); if (i) { change(+i.dataset.cinc, 1); return; }
+  const d = e.target.closest('[data-cdec]'); if (d) { change(+d.dataset.cdec, -1); return; }
+  const x = e.target.closest('[data-cdel]'); if (x) { delete cart[+x.dataset.cdel]; save(); updateCount(); renderCart(); render(); }
+});
+
+/* ---------- модалка товара ---------- */
+function openProd(id){
+  const p = PROD[id]; if (!p) return;
+  document.getElementById('pmodal').innerHTML = `
+    <button class="pm-close" id="pmClose">✕</button>
+    <div class="pm-in">
+      <div class="pm-ph">${phInner(p)}</div>
+      <div class="pm-brand">${esc(p.b||'')}</div>
+      <div class="pm-name">${esc(p.n)}${p.s ? ' — ' + esc(p.s) : ''}</div>
+      <div class="pm-rows">
+        <div class="pm-row"><span>Артикул</span><b>${esc(p.a)}</b></div>
+        <div class="pm-row"><span>Размер</span><b>${esc(p.s || '—')}</b></div>
+        <div class="pm-row"><span>Категория</span><b>${esc(CAT_LABEL[p.c]||p.c)}</b></div>
+      </div>
+      <div class="pm-price">Цена по запросу</div>
+      <div class="pm-actions">
+        <div class="stepper"><button id="pmDec">−</button><span id="pmQty">${cart[id]||0}</span><button id="pmInc">+</button></div>
+        <button class="addbtn" id="pmAdd">Добавить в корзину</button>
+      </div>
+    </div>`;
+  document.getElementById('modalOv').classList.add('show');
+  document.getElementById('pmClose').onclick = closeProd;
+  document.getElementById('modalOv').onclick = e => { if (e.target.id === 'modalOv') closeProd(); };
+  let qty = cart[id] || 0;
+  const ref = () => { document.getElementById('pmQty').textContent = qty; };
+  document.getElementById('pmInc').onclick = () => { qty++; ref(); };
+  document.getElementById('pmDec').onclick = () => { if (qty > 0) qty--; ref(); };
+  document.getElementById('pmAdd').onclick = () => {
+    if (qty > 0) { cart[id] = qty; save(); updateCount(); render(); }
+    closeProd();
+  };
+}
+function closeProd(){ document.getElementById('modalOv').classList.remove('show'); }
+
+/* ---------- форма и заказ ---------- */
+const formEls = ['fName','fPhone','fNote'];
+formEls.forEach(id => {
+  const el = document.getElementById(id);
+  if (window.__form && window.__form[id]) el.value = window.__form[id];
+  el.addEventListener('input', () => {
+    const f = {}; formEls.forEach(x => f[x] = document.getElementById(x).value);
+    localStorage.setItem('plumbing_form', JSON.stringify(f));
+  });
+});
+
+function orderText(){
+  const name = document.getElementById('fName').value.trim() || '—';
+  const phone = document.getElementById('fPhone').value.trim() || '—';
+  const note = document.getElementById('fNote').value.trim() || '—';
+  const ids = Object.keys(cart).map(Number);
+  const lines = [`🛒 ЗАКАЗ — SantehLux`, `Кто: ${name}`, `Телефон: ${phone}`, `Объект/примечание: ${note}`, ``, `Товары (${ids.length}):`];
+  ids.forEach((id, i) => {
+    const p = PROD[id]; if (!p) return;
+    lines.push(`${i+1}. ${p.n}${p.s ? ' — ' + p.s : ''}`);
+    lines.push(`   ${p.b||''} · арт. ${p.a} · ${cart[id]} шт.`.trim());
+  });
+  return lines.join('\n');
+}
+
+function sendOrder(kind){
+  if (!Object.keys(cart).length) { alert('Корзина пуста'); return; }
+  const t = orderText();
+  if (kind === 'copy') {
+    navigator.clipboard.writeText(t).then(() => alert('Текст заказа скопирован — вставьте в мессенджер'))
+      .catch(() => alert('Не удалось скопировать'));
+    return;
+  }
+  if (kind === 'wa' && PHONE.whatsapp) {
+    window.open('https://wa.me/' + PHONE.whatsapp.replace(/\D/g,'') + '?text=' + encodeURIComponent(t), '_blank');
+  } else if (kind === 'tg' && PHONE.telegram) {
+    window.open('https://t.me/' + PHONE.telegram.replace('@','') + '?text=' + encodeURIComponent(t), '_blank');
+  } else {
+    alert('Telegram не настроен. Впишите ник в файле index.html (блок PHONE) или отправьте заказ через WhatsApp.');
+  }
+}
+document.getElementById('btnWa').addEventListener('click', () => sendOrder('wa'));
+document.getElementById('btnTg').addEventListener('click', () => sendOrder('tg'));
+document.getElementById('btnCopy').addEventListener('click', () => sendOrder('copy'));
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeCart(); closeProd(); }
+});
+
+renderCatTiles();
+render();
+updateCount();
+if (!photosLoaded && PRODUCTS.some(p => p.p)) ensurePhotos(() => render());
+</script>
+</body>
+</html>
