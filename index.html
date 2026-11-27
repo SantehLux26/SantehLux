@@ -174,6 +174,9 @@ small.hint{color:var(--mut);display:block;margin:2px 0 10px;font-size:12px}
 .btn-copy{background:var(--navy);color:#fff}
 .empty-cart{color:var(--mut);text-align:center;padding:60px 10px;font-size:15px}
 .empty-cart svg{width:54px;height:54px;color:#c3d2e2;margin-bottom:12px}
+.cart-total{background:#fff7ed;border:1.5px solid #ffd8a8;border-radius:10px;padding:11px 13px;margin-bottom:10px;font-size:14.5px;color:var(--navy)}
+.cart-total b{font-size:16.5px}
+.cart-total small{display:block;color:var(--mut);font-size:11.5px;margin-top:3px}
 
 /* ---------- product modal ---------- */
 .modal-ov{position:fixed;inset:0;background:rgba(12,36,64,.55);z-index:80;opacity:0;pointer-events:none;transition:.2s;display:flex;align-items:center;justify-content:center;padding:20px}
@@ -317,7 +320,7 @@ small.hint{color:var(--mut);display:block;margin:2px 0 10px;font-size:12px}
   <div class="fgrid">
     <div>
       <div class="fbrand">Santeh<b>Lux</b></div>
-      <p>Заказ материалов для монтажа систем отопления и водоснабжения. Каталог сформирован по прайс-листам поставщиков; цены уточняются при подтверждении заказа.</p>
+      <p>Заказ материалов для монтажа систем отопления и водоснабжения. Розничные цены — по прайс-листу поставщика за 11.2026. Точную сумму подтверждаем при сборке заказа.</p>
     </div>
     <div>
       <h4>Как заказать</h4>
@@ -335,7 +338,7 @@ small.hint{color:var(--mut);display:block;margin:2px 0 10px;font-size:12px}
       </a>
     </div>
   </div>
-  <div class="fbot">© 2026 SantehLux · Цены уточняются при подтверждении заказа</div>
+  <div class="fbot">© 2026 SantehLux · Розничные цены по прайсу поставщика (11.2026)</div>
 </footer>
 
 <div class="overlay" id="ov"></div>
@@ -347,7 +350,7 @@ small.hint{color:var(--mut);display:block;margin:2px 0 10px;font-size:12px}
       <input id="fName" placeholder="Имя (кто заказывает)">
       <input id="fPhone" placeholder="Телефон для связи">
       <input id="fNote" placeholder="Объект / адрес / примечание">
-      <small class="hint">Заказ придёт в WhatsApp с названием, размером и артикулом каждого товара. Цены подтверждаем перед сборкой.</small>
+      <div class="cart-total" id="cartTotal" style="display:none"></div><small class="hint">Заказ придёт в WhatsApp с названием, размером, артикулом и суммой. Розничные цены подтверждаем перед сборкой.</small>
     </div>
     <button class="btn2 btn-wa" id="btnWa">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.2.5.2.6.4 0 .2 0 .7-.2 1z"/></svg>
@@ -374,6 +377,8 @@ const PHONE = { whatsapp: "79118974410", telegram: "" };
 const PAGE_SIZE = 60;
 </script>
 <script src="products.js"></script>
+<script src="prices.js"></script>
+<script src="photoindex.js"></script>
 <script>
 const SV = (d) => '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>';
 const ICONS = {
@@ -414,6 +419,8 @@ const ICON_RULES = [["клапан", "valve"], ["вентиль", "valve"], ["р
 // --- фото (загружаются лениво из photos.js: ключ pp{стр}_{xref} -> base64) ---
 let PHOTOS = window.PHOTOS || {};
 let photosLoaded = !!window.PHOTOS;
+let PHOTO_INDEX = window.PHOTO_INDEX || {};
+let PHOTO_BASE = window.PHOTO_BASE || '';
 function ensurePhotos(cb){
   if (photosLoaded) { cb && cb(); return; }
   photosLoaded = true;
@@ -429,6 +436,25 @@ PRODUCTS.forEach(p => { PROD[p.id] = p; });
 
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+// --- цены (розничный прайс ТЕРЕМ 11.2026) ---
+function priceFor(p){
+  if (!p || !p.a) return null;
+  const k = p.a.replace(/[\s\-_.]/g,'').toUpperCase();
+  const v = (window.PRICES||{})[k];
+  return (typeof v === 'number' && v > 0) ? v : null;
+}
+function fmtPrice(v){
+  return v.toLocaleString('ru-RU', {maximumFractionDigits: 0});
+}
+function priceHTML(p){
+  const v = priceFor(p);
+  return v ? fmtPrice(v) + ' ₽' : 'Цена по запросу';
+}
+function sumFor(p, qty){
+  const v = priceFor(p);
+  return v ? v * (qty||0) : null;
+}
+
 function iconFor(p){
   const t = (p.n + ' ' + p.c + ' ' + (p.b||'')).toLowerCase();
   for (const [k,ic] of ICON_RULES) if (t.indexOf(k) >= 0) return ic;
@@ -436,6 +462,7 @@ function iconFor(p){
 }
 function phInner(p){
   if (p.p && PHOTOS[p.p]) return '<img src="' + PHOTOS[p.p] + '" alt="" loading="lazy" onerror="this.remove()">';
+  if (PHOTO_INDEX[p.id]) return '<img src="' + PHOTO_BASE + PHOTO_INDEX[p.id] + '" alt="" loading="lazy" onerror="this.remove()">';
   return '<span class="ph-ic">' + ICONS[iconFor(p)] + '</span>';
 }
 
@@ -521,7 +548,7 @@ function cardHTML(p){
       <div class="cbrand">${esc(p.b||'')}</div>
       <div class="cname">${esc(p.n)}</div>
       <div class="csize">${esc(p.s||'')}</div>
-      <div class="cfoot"><span class="cprice">Цена по запросу</span>${ctl}</div>
+      <div class="cfoot"><span class="cprice">${priceHTML(p)}</span>${ctl}</div>
     </div>
   </div>`;
 }
@@ -601,7 +628,7 @@ function renderCart(){
       <div class="cthumb">${phInner(p)}</div>
       <div class="n">
         <div class="nm">${esc(p.n)}${p.s ? ' · ' + esc(p.s) : ''}</div>
-        <div class="pp">${esc(p.b||'')} · арт. ${esc(p.a)}</div>
+        <div class="pp">${esc(p.b||'')} · арт. ${esc(p.a)}${(()=>{const s=sumFor(p,cart[id]);return s?' · '+fmtPrice(s)+' ₽':'';})()}</div>
       </div>
       <div class="qty">
         <button data-cdec="${id}">−</button><b>${cart[id]}</b><button data-cinc="${id}">+</button>
@@ -610,6 +637,10 @@ function renderCart(){
     </div>`;
   }).join('') : `<div class="empty-cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 7H6"/></svg>Корзина пуста<br><small>Выберите товары в каталоге</small></div>`;
   document.getElementById('pfoot').style.display = ids.length ? 'block' : 'none';
+  let tot = 0; ids.forEach(id => { const p = PROD[id]; if (p) { const s = sumFor(p, cart[id]); if (s) tot += s; } });
+  const totEl = document.getElementById('cartTotal');
+  if (totEl) { totEl.style.display = tot > 0 ? 'block' : 'none';
+    totEl.innerHTML = tot > 0 ? 'Итого по каталогу: <b>' + fmtPrice(tot) + ' ₽</b> <small>· розница по прайсу, подтверждаем перед сборкой</small>' : ''; }
 }
 document.getElementById('cbody').addEventListener('click', e => {
   const i = e.target.closest('[data-cinc]'); if (i) { change(+i.dataset.cinc, 1); return; }
@@ -631,7 +662,7 @@ function openProd(id){
         <div class="pm-row"><span>Размер</span><b>${esc(p.s || '—')}</b></div>
         <div class="pm-row"><span>Категория</span><b>${esc(CAT_LABEL[p.c]||p.c)}</b></div>
       </div>
-      <div class="pm-price">Цена по запросу</div>
+      <div class="pm-price">${priceHTML(p)}</div>
       <div class="pm-actions">
         <div class="stepper"><button id="pmDec">−</button><span id="pmQty">${cart[id]||0}</span><button id="pmInc">+</button></div>
         <button class="addbtn" id="pmAdd">Добавить в корзину</button>
@@ -671,8 +702,22 @@ function orderText(){
   ids.forEach((id, i) => {
     const p = PROD[id]; if (!p) return;
     lines.push(`${i+1}. ${p.n}${p.s ? ' — ' + p.s : ''}`);
-    lines.push(`   ${p.b||''} · арт. ${p.a} · ${cart[id]} шт.`.trim());
+    const pr = priceFor(p);
+    lines.push(`   ${p.b||''} · арт. ${p.a} · ${cart[id]} шт.${pr ? ' · ' + fmtPrice(pr*cart[id]) + ' ₽' : ''}`.trim());
   });
+  let tot = 0; ids.forEach(id => { const p = PROD[id]; if (p) { const s = sumFor(p, cart[id]); if (s) tot += s; } });
+  const BASE = location.origin + location.pathname.replace(/[^/]*$/,'');
+  const phs = [];
+  ids.forEach(id => { const p = PROD[id];
+    if (!p) return;
+    if (p.p && PHOTOS[p.p] && String(PHOTOS[p.p]).indexOf('data:') !== 0 && phs.indexOf(PHOTOS[p.p]) < 0) phs.push(PHOTOS[p.p]);
+    else if (PHOTO_INDEX[id] && phs.indexOf(PHOTO_BASE + PHOTO_INDEX[id]) < 0) phs.push(PHOTO_BASE + PHOTO_INDEX[id]);
+  });
+  if (tot > 0) lines.push('', `Итого по каталогу: ${fmtPrice(tot)} ₽ (розница по прайсу, уточняется при сборке)`);
+  const text = lines.join('\n');
+  const phLine = phs.length ? '\n\nФото: ' + phs.slice(0,4).map(u => u).join(' ') : '';
+  if (text.length + phLine.length < 1900) return text + phLine;
+  return text;
   return lines.join('\n');
 }
 
